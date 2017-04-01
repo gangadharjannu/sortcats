@@ -1,0 +1,12 @@
+<h1>{{title}}</h1>
+<h3>List of all the cats in alphabetical order under a heading of the gender of their owner.</h3>
+<div>
+  <div *ngFor="let list of cats">
+    <h4>{{list.gender}}</h4>
+    <ul>
+      <li *ngFor="let pet of list.pets | orderBy:'asc'">
+        {{pet}}
+      </li>
+    </ul>
+  </div>
+</div>
