@@ -1,23 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { CatsService } from './services/cats.service';
-
+import { PetsService } from './services/pets.service';
 @Component({
   selector: 'app-root',
-  providers: [CatsService],
+  providers: [PetsService],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
   title = 'AGL Coding Test';
-  cats: any[];
-  constructor(public catsService: CatsService) {
+  pets: any[];
+  constructor(public petsService: PetsService) {
 
   }
   ngOnInit() {
-    this.getCats();
+    this.getPets();
   }
-  getCats() {
-    this.catsService
-      .getCats().then((res) => this.cats = res);
+  getPets() {
+    this.petsService
+      .getCats().then((res) => this.pets = res);
   }
 }
