@@ -1,0 +1,6 @@
+<h3>{{gender}}</h3>
+<ul>
+  <li *ngFor="let pet of pets | filterBy:'type':'Cat' |orderBy:'name':'asc'">
+    {{pet.name}}
+  </li>
+</ul>
