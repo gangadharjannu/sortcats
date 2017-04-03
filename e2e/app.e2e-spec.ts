@@ -7,8 +7,9 @@ describe('project App', () => {
     page = new ProjectPage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display message saying AGL Coding Test', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    console.log(page);
+    expect(page.getParagraphText()).toEqual('AGL Coding Test');
   });
 });
