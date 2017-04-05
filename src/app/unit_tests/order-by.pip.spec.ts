@@ -5,7 +5,7 @@ describe('PIPE: OrderByPipe', () => {
         this.pipe = new OrderByPipe();
     });
 
-    it('should create the pipe', () => {
+    it('should create the orderBy pipe', () => {
         expect(this.pipe).toBeTruthy();
     });
 

@@ -5,7 +5,7 @@ import { MockBackend, MockConnection } from '@angular/http/testing';
 
 import { PetsService } from '../services/pets.service';
 import { pets, groupedPets } from './mockdata';
-describe('PetsService', () => {
+describe('SERVICE: PetsService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
@@ -24,19 +24,22 @@ describe('PetsService', () => {
 
   });
 
-  it('should ...', inject([PetsService], (service: PetsService) => {
-    expect(service).toBeTruthy();
+  it('should create the PetsService', inject([PetsService], (petService: PetsService) => {
+    expect(petService).toBeTruthy();
   }));
+  it('getPets method should exist', inject([PetsService], (petService: PetsService) => {
+    expect(petService).toBeTruthy();
+  }));
+  it('should return all the pets under a heading of the gender of their owner',
+    async(inject([PetsService, MockBackend], (service: PetsService, backend: MockBackend) => {
+      backend.connections.subscribe((conn: MockConnection) => {
+        const options: ResponseOptions = new ResponseOptions({ body: pets });
+        conn.mockRespond(new Response(options));
+      });
 
-  it('should return all the cats in alphabetical order under a heading of the gender of their owner', async(inject([PetsService, MockBackend], (service: PetsService, backend: MockBackend) => {
-    backend.connections.subscribe((conn: MockConnection) => {
-      const options: ResponseOptions = new ResponseOptions({ body: pets });
-      conn.mockRespond(new Response(options));
-    });
+      service.getCats().then(res => {
+        expect(res).toEqual(groupedPets);
+      });
 
-    service.getCats().then(res => {
-      expect(res).toEqual(groupedPets);
-    });
-
-  })));
+    })));
 });
