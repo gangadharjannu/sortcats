@@ -1,4 +1,4 @@
-import { OrderByPipe } from './order-by.pipe';
+import { OrderByPipe } from '../pipes/order-by.pipe';
 describe('PIPE: OrderByPipe', () => {
 
     beforeEach(() => {

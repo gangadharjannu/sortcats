@@ -4,11 +4,12 @@ import { ResponseOptions } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 
 import { AppComponent } from '../app.component';
-import { CatsService } from '../services/cats.service';
+import { PetsService } from '../services/pets.service';
 import { OrderByPipe } from '../pipes/order-by.pipe';
+import { FilterByPipe } from '../pipes/filter-by.pipe';
 
-class MockCatsService {
-  public cats: any[] = [{
+class MockPetsService {
+  public pets: any[] = [{
     gender: 'Male',
     pets: ['Garfield', 'Tom', 'Max', 'Jim']
   }, {
@@ -18,7 +19,7 @@ class MockCatsService {
 
   getCats() {
     return new Promise<any[]>((resolve, reject) => {
-      resolve(this.cats);
+      resolve(this.pets);
     });
   }
 }
@@ -26,9 +27,9 @@ class MockCatsService {
 describe('COMPONENT: AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AppComponent, OrderByPipe],
+      declarations: [AppComponent, OrderByPipe, FilterByPipe],
       providers: [
-        { provide: CatsService, useClass: MockCatsService },
+        { provide: PetsService, useClass: MockPetsService },
         MockBackend,
         BaseRequestOptions,
         {
@@ -40,10 +41,11 @@ describe('COMPONENT: AppComponent', () => {
         }
       ]
     });
+    // override dependencies of component to take required providers from mock service
     TestBed.overrideComponent(AppComponent, {
       set: {
         providers: [
-          { provide: CatsService, useClass: MockCatsService }
+          { provide: PetsService, useClass: MockPetsService }
         ]
       }
     });
@@ -61,38 +63,11 @@ describe('COMPONENT: AppComponent', () => {
     expect(this.app.title).toEqual('AGL Coding Test');
   }));
 
-  it('should render title in a h1 tag', async(() => {
-    this.fixture.detectChanges();
-    const compiled = this.fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('AGL Coding Test');
-  }));
-
-  it('should list all the cats', fakeAsync(() => {
+  it('should contain all the cats', fakeAsync(() => {
     this.fixture.componentInstance.getCats();
     tick();
     this.fixture.detectChanges();
-    const compiled = this.fixture.debugElement.nativeElement;
-    expect(compiled.querySelectorAll('li').length).toBe(7);
-  }));
-
-  it('should show the gender divs', fakeAsync(() => {
-    this.fixture.componentInstance.getCats();
-    tick();
-    this.fixture.detectChanges();
-    const compiled = this.fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('div').children.length).toBe(2);
-  }));
-
-  it('should list all the cats in alphabetical order under a heading of the gender of their owner', fakeAsync(() => {
-    this.fixture.componentInstance.getCats();
-    tick();
-    this.fixture.detectChanges();
-    const compiled = this.fixture.debugElement.nativeElement;
-
-    const list = Array.from(compiled.querySelectorAll('li')).map((li) => (<any>li).innerText);
-    const sortedCats = ['Garfield', 'Jim', 'Max', 'Tom', 'Garfield', 'Simba', 'Tabby']
-
-    expect(list).toEqual(sortedCats);
+    expect(this.app.pets.length).toBe(7);
   }));
 
 });
