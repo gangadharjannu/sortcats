@@ -1,25 +1,22 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PetsComponent } from '../pets/pets.component';
+import { OrderByPipe } from '../pipes/order-by.pipe';
+import { FilterByPipe } from '../pipes/filter-by.pipe';
 
 describe('PetsComponent', () => {
-  let component: PetsComponent;
-  let fixture: ComponentFixture<PetsComponent>;
-
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PetsComponent ]
-    })
-    .compileComponents();
+      declarations: [PetsComponent, OrderByPipe, FilterByPipe]
+    });
+
+    this.fixture = TestBed.createComponent(PetsComponent);
+    this.fixture.detectChanges();
+    this.app = this.fixture.debugElement.componentInstance;
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(PetsComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(this.app).toBeTruthy();
   });
 });

@@ -10,16 +10,44 @@ describe('PIPE: OrderByPipe', () => {
     });
 
     it('should sort array in ascending order', () => {
-        const names: string[] = ['B', 'A', 'F', 'D'];
-        const sortedNames: string[] = Array.from(names).sort();
-        const args = 'asc';
-        expect(this.pipe.transform(names, args)).toEqual(sortedNames);
+        const names: any[] = [{
+            name: 'Garfield',
+            type: 'Cat'
+        }, {
+            name: 'Tom',
+            type: 'Cat'
+        }, {
+            name: 'Max',
+            type: 'Cat'
+        }, {
+            name: 'Jim',
+            type: 'Cat'
+        }];
+        const sortedNames: string[] = names.map(v => v.name).sort();
+
+        const property = 'name',
+            order = 'asc';
+        expect(this.pipe.transform(names, property, order).map(v => v.name)).toEqual(sortedNames);
     });
 
     it('should sort array in descending order', () => {
-        const names: string[] = ['B', 'A', 'F', 'D'];
-        const sortedNames: string[] = Array.from(names).sort().reverse();
-        const args = 'desc';
-        expect(this.pipe.transform(names, args)).toEqual(sortedNames);
+        const names: any[] = [{
+            name: 'Garfield',
+            type: 'Cat'
+        }, {
+            name: 'Tom',
+            type: 'Cat'
+        }, {
+            name: 'Max',
+            type: 'Cat'
+        }, {
+            name: 'Jim',
+            type: 'Cat'
+        }];
+        const sortedNames: string[] = names.map(v => v.name).sort().reverse();
+        const property = 'name',
+            order = 'desc';
+        expect(this.pipe.transform(names, property, order).map(v => v.name)).toEqual(sortedNames);
     });
+
 });

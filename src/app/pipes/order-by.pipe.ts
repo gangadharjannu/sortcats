@@ -20,6 +20,6 @@ export class OrderByPipe implements PipeTransform {
             };
         }
 
-        return array.sort(comparatorFn);
+        return array && array.sort(comparatorFn);
     }
 }

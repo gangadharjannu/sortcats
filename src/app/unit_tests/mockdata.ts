@@ -1,4 +1,4 @@
-export const cats = [
+export const pets = [
     {
         name: 'Bob',
         gender: 'Male',
@@ -81,10 +81,42 @@ export const cats = [
         ]
     }
 ];
-export const groupedCats = [{
-    gender: 'Male',
-    pets: ['Garfield', 'Tom', 'Max', 'Jim']
-}, {
-    gender: 'Female',
-    pets: ['Garfield', 'Tabby', 'Simba']
-}];
+
+export const groupedPets = [
+    {
+        gender: 'Male',
+        pets: [{
+            name: 'Garfield',
+            type: 'Cat'
+        }, {
+            name: 'Fido',
+            type: 'Dog'
+        }, {
+            name: 'Tom',
+            type: 'Cat'
+        }, {
+            name: 'Max',
+            type: 'Cat'
+        }, {
+            name: 'Sam',
+            type: 'Dog'
+        }, {
+            name: 'Jim',
+            type: 'Cat'
+        }]
+    }, {
+        'gender': 'Female',
+        'pets': [{
+            'name': 'Garfield',
+            'type': 'Cat'
+        }, {
+            'name': 'Tabby',
+            'type': 'Cat'
+        }, {
+            'name': 'Simba',
+            'type': 'Cat'
+        }, {
+            'name': 'Nemo',
+            'type': 'Fish'
+        }]
+    }];

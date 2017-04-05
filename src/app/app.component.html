@@ -1,7 +1,5 @@
 <h1>{{title}}</h1>
 <h3>List of all the cats in alphabetical order under a heading of the gender of their owner.</h3>
 <div>
-  <div *ngFor="let list of pets">
-    <app-pets [gender]="list.gender" [pets]="list.pets"></app-pets>
-  </div>
+  <app-pets *ngFor="let list of pets" [gender]="list.gender" [pets]="list.pets"></app-pets>
 </div>

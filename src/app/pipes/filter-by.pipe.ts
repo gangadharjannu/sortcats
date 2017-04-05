@@ -5,6 +5,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FilterByPipe implements PipeTransform {
   transform(array: Array<string>, prop: string, propVal: string): any {
-    return array.filter(pet => pet[prop] === propVal);
+    return array && array.filter(pet => pet[prop] === propVal);
   }
 }

@@ -4,6 +4,7 @@ import { ResponseOptions } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 
 import { AppComponent } from '../app.component';
+import { PetsComponent } from '../pets/pets.component';
 import { PetsService } from '../services/pets.service';
 import { OrderByPipe } from '../pipes/order-by.pipe';
 import { FilterByPipe } from '../pipes/filter-by.pipe';
@@ -11,10 +12,40 @@ import { FilterByPipe } from '../pipes/filter-by.pipe';
 class MockPetsService {
   public pets: any[] = [{
     gender: 'Male',
-    pets: ['Garfield', 'Tom', 'Max', 'Jim']
+    pets: [{
+      name: 'Garfield',
+      type: 'Cat'
+    }, {
+      name: 'Fido',
+      type: 'Dog'
+    }, {
+      name: 'Tom',
+      type: 'Cat'
+    }, {
+      name: 'Max',
+      type: 'Cat'
+    }, {
+      name: 'Sam',
+      type: 'Dog'
+    }, {
+      name: 'Jim',
+      type: 'Cat'
+    }]
   }, {
     gender: 'Female',
-    pets: ['Garfield', 'Tabby', 'Simba']
+    pets: [{
+      name: 'Garfield',
+      type: 'Cat'
+    }, {
+      name: 'Tabby',
+      type: 'Cat'
+    }, {
+      name: 'Simba',
+      type: 'Cat'
+    }, {
+      name: 'Nemo',
+      type: 'Fish'
+    }]
   }];
 
   getCats() {
@@ -27,7 +58,7 @@ class MockPetsService {
 describe('COMPONENT: AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AppComponent, OrderByPipe, FilterByPipe],
+      declarations: [AppComponent, PetsComponent, OrderByPipe, FilterByPipe],
       providers: [
         { provide: PetsService, useClass: MockPetsService },
         MockBackend,
@@ -63,11 +94,8 @@ describe('COMPONENT: AppComponent', () => {
     expect(this.app.title).toEqual('AGL Coding Test');
   }));
 
-  it('should contain all the cats', fakeAsync(() => {
-    this.fixture.componentInstance.getCats();
-    tick();
-    this.fixture.detectChanges();
-    expect(this.app.pets.length).toBe(7);
+  it('should contain all the cats', async(() => {
+    expect(this.app.pets.length).toBe(2);
   }));
 
 });
