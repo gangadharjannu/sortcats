@@ -6,18 +6,9 @@ export class OrderByPipe implements PipeTransform {
         let comparatorFn: (a: any, b: any) => number;
 
         if (order === 'asc') {
-            comparatorFn = (a, b): number => {
-                if (a[prop].toLowerCase() < b[prop].toLowerCase()) return -1;
-                if (a[prop].toLowerCase() > b[prop].toLowerCase()) return 1;
-                return 0;
-            };
-
+            comparatorFn = (a, b): number => String.prototype.localeCompare.call(a[prop], b[prop]);
         } else {
-            comparatorFn = (a, b): number => {
-                if (a[prop].toLowerCase() > b[prop].toLowerCase()) return -1;
-                if (a[prop].toLowerCase() < b[prop].toLowerCase()) return 1;
-                return 0;
-            };
+            comparatorFn = (a, b): number => String.prototype.localeCompare.call(b[prop], a[prop]);
         }
 
         return array && array.sort(comparatorFn);
