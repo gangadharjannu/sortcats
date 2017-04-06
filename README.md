@@ -11,7 +11,7 @@
 
 ### Git repository:
 
-    git clone https://gangadharjannu@gitlab.com/gangadharjannu/sortcats.git
+    git clone https://github.com/gangadharjannu/sortcats.git
     cd sortcats
     
 ### Technologies used:
