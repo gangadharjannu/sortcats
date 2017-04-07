@@ -29,9 +29,5 @@
 
 ### References:
 <p align="center">
-<img src="https://raw.githubusercontent.com/gangadharjannu/sortcats/master/src/app/unit_tests/code-coverage.png" alt="code coverage" title="Code coverage">
+<img src="https://raw.githubusercontent.com/gangadharjannu/sortcats/master/unit_tests/code-coverage.png" alt="code coverage" title="Code coverage">
 </p>
-
-
-[1]: https://github.com/gangadharjannu/sortcats/tree/master/src/app/unit_tests
-[coverage]: https://github.com/gangadharjannu/sortcats/blob/master/src/app/unit_tests/code-coverage.png "Code Coverage"
