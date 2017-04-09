@@ -31,3 +31,10 @@ export class AppComponent implements OnInit {
       });
   }
 }
+//
+// https://www.pexels.com/blog/css-only-loaders/
+// https://github.com/toddmotto/public-apis
+// http://tobiasahlin.com/spinkit/
+// https://scotch.io/tutorials/angular-2-http-requests-with-observables
+// https://hassantariqblog.wordpress.com/2016/12/03/angular2-using-loaderspinner-as-angular-service-in-angular-2-application/
+// https://plnkr.co/edit/G1shOf?p=preview
