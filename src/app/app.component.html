@@ -3,3 +3,5 @@
 <div>
   <app-pets *ngFor="let list of pets" [gender]="list.gender" [pets]="list.pets"></app-pets>
 </div>
+<!--Loading icon-->
+<span *ngIf="showLoader" class="loading"></span>

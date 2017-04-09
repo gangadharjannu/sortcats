@@ -8,7 +8,7 @@ import { PetsComponent } from './pets/pets.component';
 import { OrderByPipe } from './pipes/order-by.pipe';
 import { FilterByPipe } from './pipes/filter-by.pipe';
 
-
+import { LoaderService } from './services/loader.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +20,7 @@ import { FilterByPipe } from './pipes/filter-by.pipe';
     BrowserModule,
     HttpModule
   ],
-  providers: [],
+  providers: [LoaderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
