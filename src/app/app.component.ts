@@ -3,31 +3,32 @@ import { PetsService } from './services/pets.service';
 import { LoaderService } from './services/loader.service';
 @Component({
   selector: 'app-root',
-  providers: [PetsService, LoaderService],
+  providers: [PetsService],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
   title = 'AGL Coding Test';
   pets: any[];
-  showLoader: boolean;
-  constructor(private petsService: PetsService, private loader: LoaderService) {
-    this.loader.status.subscribe((val: boolean) => {
-      this.showLoader = val;
+  pendingRequests: number = 0;
+  constructor(private petsService: PetsService, public loaderService: LoaderService) {
+    this.loaderService.pendingRequests.subscribe((count: number) => {
+      this.pendingRequests = count;
+      console.log('next');
+    }, (error) => {
+      console.log(error);
+      console.log('error');
+    }, () => {
+      console.log('completed');
     });
   }
   ngOnInit() {
     this.getPets();
   }
   getPets() {
-    // http call starts
-    this.loader.display(true);
-
     this.petsService
       .getCats().then((res) => {
         this.pets = res;
-        // http call ends
-        this.loader.display(false);
       });
   }
 }

@@ -1,6 +1,6 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { LoaderService } from './loader.service';
+import { LoaderService } from '../services/loader.service';
 
 describe('LoaderService', () => {
   beforeEach(() => {
