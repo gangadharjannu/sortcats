@@ -44,16 +44,16 @@ export class CustomHttpService extends Http {
 
   // INTERCEPTOR
   interceptor(observable: Observable<Response>): Observable<Response> {
-    this.loaderService.pendingRequests.next(this.pendingRequestsCount++);
+    this.loaderService.pendingRequests.next(++this.pendingRequestsCount);
     return observable
       .do((response: Response) => {
-        // console.log(`Response: ${response}`);
+        console.log(`Response: ${response}`);
       }, (error) => {
         console.log(`Error: ${error}`);
       })
       .finally(() => {
         console.log(`Finally!`);
-        this.loaderService.pendingRequests.next(this.pendingRequestsCount--);
+        this.loaderService.pendingRequests.next(--this.pendingRequestsCount);
       })
       .catch((error, caught) => {
         console.log(`Error: ${error}`);
