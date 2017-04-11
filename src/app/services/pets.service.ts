@@ -12,10 +12,11 @@ export class PetsService {
 
   constructor(private http: Http) { }
   getCats = () => {
-    return this.http.get(Constants.API_ENDPOINT_PUBLIC)
-      .map((res) => {
-        return res.json();
-      }).map(this.petsList).toPromise();
+    return this.http
+      .get(Constants.API_ENDPOINT_PUBLIC)
+      .map(res => res.json())
+      .map(this.petsList)
+      .toPromise();
   }
 
   petsList = (owners) => {
