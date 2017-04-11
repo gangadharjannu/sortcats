@@ -3,8 +3,4 @@
 <div>
   <app-pets *ngFor="let list of pets" [gender]="list.gender" [pets]="list.pets"></app-pets>
 </div>
-<!--Loading icon-->
-<!--<span *ngIf="showLoader" class="loading"></span>-->
-{{pendingRequests}}
-<button (click)="getPets()">Get pets</button>
 <div class="loading" *ngIf="pendingRequests>=1">Loading&#8230;</div>

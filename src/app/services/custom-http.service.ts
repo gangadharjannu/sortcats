@@ -47,12 +47,11 @@ export class CustomHttpService extends Http {
     this.loaderService.pendingRequests.next(++this.pendingRequestsCount);
     return observable
       .do((response: Response) => {
-        console.log(`Response: ${response}`);
+        // console.log(`Response: ${response}`);
       }, (error) => {
         console.log(`Error: ${error}`);
       })
       .finally(() => {
-        console.log(`Finally!`);
         this.loaderService.pendingRequests.next(--this.pendingRequestsCount);
       })
       .catch((error, caught) => {

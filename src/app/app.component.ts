@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
     });
   }
   ngOnInit() {
-    // this.getPets();
+    this.getPets();
   }
   getPets() {
     this.petsService
