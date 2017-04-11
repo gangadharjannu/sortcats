@@ -26,21 +26,21 @@ export class CustomHttpService extends Http {
     return this.interceptor(super.request(url, options));
   }
 
-  get(url: string, options?: RequestOptionsArgs): Observable<Response> {
-    return this.interceptor(super.get(url, options));
-  }
+  // get(url: string, options?: RequestOptionsArgs): Observable<Response> {
+  //   return this.interceptor(super.get(url, options));
+  // }
 
-  post(url: string, body: string, options?: RequestOptionsArgs): Observable<Response> {
-    return this.interceptor(super.post(url, body, options));
-  }
+  // post(url: string, body: string, options?: RequestOptionsArgs): Observable<Response> {
+  //   return this.interceptor(super.post(url, body, options));
+  // }
 
-  put(url: string, body: string, options?: RequestOptionsArgs): Observable<Response> {
-    return this.interceptor(super.put(url, body, options));
-  }
+  // put(url: string, body: string, options?: RequestOptionsArgs): Observable<Response> {
+  //   return this.interceptor(super.put(url, body, options));
+  // }
 
-  delete(url: string, options?: RequestOptionsArgs): Observable<Response> {
-    return this.interceptor(super.delete(url, options));
-  }
+  // delete(url: string, options?: RequestOptionsArgs): Observable<Response> {
+  //   return this.interceptor(super.delete(url, options));
+  // }
 
   // INTERCEPTOR
   interceptor(observable: Observable<Response>): Observable<Response> {
